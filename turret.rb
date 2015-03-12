@@ -1,11 +1,18 @@
 require 'sinatra'
+require 'pp'
 set :static, true
 set :public_folder, "public"
 set :views, "views"
 
-post '/' do
-  File.open('/home/deploy/turret/current/logfile.log', 'w') { |file|
-    file.write("#{params}")
-  }
-  erb :index
+get '/form' do
+    erb :form
 end
+
+post '/' do
+ pp params
+ session[:lastname] = params['lastname']
+ session[:firstname] = params['firstname']
+ session[:table] = params['table']
+ erb :index
+end
+
