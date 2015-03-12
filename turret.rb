@@ -1,4 +1,4 @@
-set :port, 8080
+require 'sinatra'
 set :static, true
 set :public_folder, "public"
 set :views, "views"
@@ -7,14 +7,9 @@ get '/' do
       return 'Hello world'
 end
 
-get '/hello/' do
-      erb :hello_form
+
+class HelloWorldApp < Sinatra::Base
+  get '/:greeting/?:name?' do
+    "#{params[:greeting]}, #{params[:name] ? params[:name] : 'world'}!"
+  end
 end
-
-post '/hello/' do
-      greeting = params[:greeting] || "Hi There"
-          name = params[:name] || "Nobody"
-
-              erb :index, :locals => {'greeting' => greeting, 'name' => name}
-end
-
