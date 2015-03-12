@@ -4,7 +4,7 @@ set :public_folder, "public"
 set :views, "views"
 
 get '/' do
-  File.open('logfile.log', 'w') { |file|
+  File.open('/home/deploy/turret/current/logfile.log', 'w') { |file|
     file.write("#{params}")
   }
   puts "#{params}"
