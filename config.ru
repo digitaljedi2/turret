@@ -1,4 +1,6 @@
 require 'rubygems'
+require 'bundler/setup'
+require 'sinatra'
 require 'vendor/sinatra/lib/sinatra.rb'
  
 set :public, File.expand_path(File.dirname(__FILE__) + '/public') # Include your public folder
